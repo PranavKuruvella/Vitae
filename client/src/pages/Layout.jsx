@@ -1,12 +1,16 @@
 import React from 'react'
 import { Outlet, Link } from 'react-router-dom'
 
+import Navbar from '../components/NavBar.jsx'
+
 const Layout = () => {
   return (
-    <>
-    <h1>Layout</h1>
-    <Outlet />
-    </>
+    <div>
+      <div className='min-h-screen bg-gray-50'>
+        <Navbar />
+        <Outlet />
+      </div>
+    </div>
   )
 }
 
