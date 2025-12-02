@@ -18,7 +18,7 @@ const MinimalImageTemplate = ({ data, accentColor }) => {
                     {/* Image */}
                     {data.personal_info?.image && typeof data.personal_info.image === 'string' ? (
                         <div className="mb-6">
-                            <img src={data.personal_info.image} alt="Profile" className="w-32 h-32 object-cover rounded-full mx-auto" style={{ background: accentColor+'70' }} />
+                            <img src={data.personal_info.image} alt="Profile" className="w-32 h-32 object-cover rounded-full mx-auto" style={{ background: accentColor + '70' }} />
                         </div>
                     ) : (
                         data.personal_info?.image && typeof data.personal_info.image === 'object' ? (
@@ -34,9 +34,6 @@ const MinimalImageTemplate = ({ data, accentColor }) => {
                     <h1 className="text-4xl font-bold text-zinc-700 tracking-widest">
                         {data.personal_info?.full_name || "Your Name"}
                     </h1>
-                    <p className="uppercase text-zinc-600 font-medium text-sm tracking-widest">
-                        {data?.personal_info?.profession || "Profession"}
-                    </p>
                 </div>
 
                 {/* Left Sidebar */}
@@ -61,10 +58,22 @@ const MinimalImageTemplate = ({ data, accentColor }) => {
                                     <span>{data.personal_info.email}</span>
                                 </div>
                             )}
-                            {data.personal_info?.location && (
+                            {data.personal_info?.linkedin && (
                                 <div className="flex items-center gap-2">
-                                    <MapPin size={14} style={{ color: accentColor }} />
-                                    <span>{data.personal_info.location}</span>
+                                    <span style={{ color: accentColor, fontWeight: 'bold' }}>in</span>
+                                    <span className="break-all">{data.personal_info.linkedin}</span>
+                                </div>
+                            )}
+                            {data.personal_info?.github && (
+                                <div className="flex items-center gap-2">
+                                    <span style={{ color: accentColor, fontWeight: 'bold' }}>gh</span>
+                                    <span className="break-all">{data.personal_info.github}</span>
+                                </div>
+                            )}
+                            {data.personal_info?.website && (
+                                <div className="flex items-center gap-2">
+                                    <span style={{ color: accentColor, fontWeight: 'bold' }}>web</span>
+                                    <span className="break-all">{data.personal_info.website}</span>
                                 </div>
                             )}
                         </div>

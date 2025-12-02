@@ -1,4 +1,3 @@
-
 const MinimalTemplate = ({ data, accentColor }) => {
     const formatDate = (dateStr) => {
         if (!dateStr) return "";
@@ -20,9 +19,11 @@ const MinimalTemplate = ({ data, accentColor }) => {
                 <div className="flex flex-wrap gap-6 text-sm text-gray-600">
                     {data.personal_info?.email && <span>{data.personal_info.email}</span>}
                     {data.personal_info?.phone && <span>{data.personal_info.phone}</span>}
-                    {data.personal_info?.location && <span>{data.personal_info.location}</span>}
                     {data.personal_info?.linkedin && (
                         <span className="break-all">{data.personal_info.linkedin}</span>
+                    )}
+                    {data.personal_info?.github && (
+                        <span className="break-all">{data.personal_info.github}</span>
                     )}
                     {data.personal_info?.website && (
                         <span className="break-all">{data.personal_info.website}</span>

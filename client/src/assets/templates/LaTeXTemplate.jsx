@@ -25,12 +25,6 @@ const LaTeXTemplate = ({ data }) => {
                 </h1>
 
                 <div className="flex flex-wrap justify-center gap-x-[0.5cm] text-[10pt] text-black">
-                    {data.personal_info?.location && (
-                        <div className="flex items-center gap-1">
-                            <MapPin className="size-3" />
-                            <span>{data.personal_info.location}</span>
-                        </div>
-                    )}
                     {data.personal_info?.email && (
                         <div className="flex items-center gap-1">
                             <Mail className="size-3" />
