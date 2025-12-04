@@ -1,6 +1,6 @@
 import { Mail, Phone, MapPin, Linkedin, Globe, Github } from "lucide-react";
 
-const LaTeXTemplate = ({ data }) => {
+const LaTeXTemplate = ({ data, accentColor }) => {
     const formatDate = (dateStr) => {
         if (!dateStr) return "";
         const [year, month] = dateStr.split("-");
@@ -12,7 +12,7 @@ const LaTeXTemplate = ({ data }) => {
 
     return (
         <div
-            className="mx-auto bg-white text-black font-[Charter] text-[13.3px] leading-[1.5] w-[8.5in] h-[11in] p-[2cm]"
+            className="mx-auto bg-white text-black font-[Charter] text-[13.3px] leading-normal w-[8.5in] p-[0.8cm]"
             style={{
                 boxSizing: "border-box",
                 pageBreakAfter: "always",
@@ -20,38 +20,38 @@ const LaTeXTemplate = ({ data }) => {
         >
             {/* Header */}
             <header className="text-center mb-[0.5cm]">
-                <h1 className="text-[25pt] font-bold mb-[0.2cm]">
+                <h1 className="text-[25pt] font-bold mb-[0.2cm]" style={{ color: accentColor }}>
                     {data.personal_info?.full_name || "John Doe"}
                 </h1>
 
                 <div className="flex flex-wrap justify-center gap-x-[0.5cm] text-[10pt] text-black">
                     {data.personal_info?.email && (
                         <div className="flex items-center gap-1">
-                            <Mail className="size-3" />
+                            <Mail className="size-3" style={{ color: accentColor }} />
                             <span>{data.personal_info.email}</span>
                         </div>
                     )}
                     {data.personal_info?.phone && (
                         <div className="flex items-center gap-1">
-                            <Phone className="size-3" />
+                            <Phone className="size-3" style={{ color: accentColor }} />
                             <span>{data.personal_info.phone}</span>
                         </div>
                     )}
                     {data.personal_info?.website && (
                         <div className="flex items-center gap-1">
-                            <Globe className="size-3" />
+                            <Globe className="size-3" style={{ color: accentColor }} />
                             <span className="break-all">{data.personal_info.website}</span>
                         </div>
                     )}
                     {data.personal_info?.linkedin && (
                         <div className="flex items-center gap-1">
-                            <Linkedin className="size-3" />
+                            <Linkedin className="size-3" style={{ color: accentColor }} />
                             <span className="break-all">{data.personal_info.linkedin}</span>
                         </div>
                     )}
                     {data.personal_info?.github && (
                         <div className="flex items-center gap-1">
-                            <Github className="size-3" />
+                            <Github className="size-3" style={{ color: accentColor }} />
                             <span className="break-all">{data.personal_info.github}</span>
                         </div>
                     )}
@@ -61,7 +61,7 @@ const LaTeXTemplate = ({ data }) => {
             {/* Summary */}
             {data.professional_summary && (
                 <section className="mb-[0.3cm]">
-                    <h2 className="font-bold text-[13pt] border-b border-black mb-[0.2cm] pb-[1pt]">
+                    <h2 className="font-bold text-[13pt] border-b mb-[0.2cm] pb-[1pt]" style={{ borderColor: accentColor, color: accentColor }}>
                         Summary
                     </h2>
                     <p>{data.professional_summary}</p>
@@ -71,7 +71,7 @@ const LaTeXTemplate = ({ data }) => {
             {/* Education */}
             {data.education && data.education.length > 0 && (
                 <section className="mb-[0.3cm]">
-                    <h2 className="font-bold text-[13pt] border-b border-black mb-[0.2cm] pb-[1pt]">
+                    <h2 className="font-bold text-[13pt] border-b mb-[0.2cm] pb-[1pt]" style={{ borderColor: accentColor, color: accentColor }}>
                         Education
                     </h2>
                     {data.education.map((edu, index) => (
@@ -93,7 +93,7 @@ const LaTeXTemplate = ({ data }) => {
             {/* Experience */}
             {data.experience && data.experience.length > 0 && (
                 <section className="mb-[0.3cm]">
-                    <h2 className="font-bold text-[13pt] border-b border-black mb-[0.2cm] pb-[1pt]">
+                    <h2 className="font-bold text-[13pt] border-b mb-[0.2cm] pb-[1pt]" style={{ borderColor: accentColor, color: accentColor }}>
                         Experience
                     </h2>
                     {data.experience.map((exp, index) => (
@@ -107,7 +107,7 @@ const LaTeXTemplate = ({ data }) => {
                                 </div>
                             </div>
                             {exp.description && (
-                                <ul className="list-disc ml-[10pt] mt-[0.1cm] space-y-[0.05cm]">
+                                <ul className="list-disc ml-[17pt] mt-[0.1cm] ">
                                     {exp.description.split("\n").map((line, i) => (
                                         <li key={i}>{line}</li>
                                     ))}
@@ -121,7 +121,7 @@ const LaTeXTemplate = ({ data }) => {
             {/* Projects */}
             {data.project && data.project.length > 0 && (
                 <section className="mb-[0.3cm]">
-                    <h2 className="font-bold text-[13pt] border-b border-black mb-[0.2cm] pb-[1pt]">
+                    <h2 className="font-bold text-[13pt] border-b mb-[0.2cm] pb-[1pt]" style={{ borderColor: accentColor, color: accentColor }}>
                         Projects
                     </h2>
                     {data.project.map((proj, index) => (
@@ -129,7 +129,7 @@ const LaTeXTemplate = ({ data }) => {
                             <div className="flex justify-between">
                                 <strong>{proj.name}</strong>
                                 {proj.link && (
-                                    <a href={proj.link} className="text-[10pt] underline">
+                                    <a href={proj.link} className="text-[10pt] underline" style={{ color: accentColor }}>
                                         {proj.link}
                                     </a>
                                 )}
@@ -147,7 +147,7 @@ const LaTeXTemplate = ({ data }) => {
             {/* Publications */}
             {data.publications && data.publications.length > 0 && (
                 <section className="mb-[0.3cm]">
-                    <h2 className="font-bold text-[13pt] border-b border-black mb-[0.2cm] pb-[1pt]">
+                    <h2 className="font-bold text-[13pt] border-b mb-[0.2cm] pb-[1pt]" style={{ borderColor: accentColor, color: accentColor }}>
                         Publications
                     </h2>
                     {data.publications.map((pub, index) => (
@@ -158,7 +158,7 @@ const LaTeXTemplate = ({ data }) => {
                             </div>
                             <div className="italic">{pub.authors}</div>
                             {pub.link && (
-                                <a href={pub.link} className="text-[10pt] underline">
+                                <a href={pub.link} className="text-[10pt] underline" style={{ color: accentColor }}>
                                     {pub.link}
                                 </a>
                             )}
@@ -170,7 +170,7 @@ const LaTeXTemplate = ({ data }) => {
             {/* Technologies */}
             {data.skills && data.skills.length > 0 && (
                 <section>
-                    <h2 className="font-bold text-[13pt] border-b border-black mb-[0.2cm] pb-[1pt]">
+                    <h2 className="font-bold text-[13pt] border-b mb-[0.2cm] pb-[1pt]" style={{ borderColor: accentColor, color: accentColor }}>
                         Technologies
                     </h2>
                     <div className="flex flex-wrap gap-x-[0.4cm]">
