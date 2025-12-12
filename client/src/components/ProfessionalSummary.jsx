@@ -15,7 +15,7 @@ const ProfessionalSummary = ({ data, onChange, setResumeData }) => {
         </div>
 
         {/* AI enhance button */}
-        <button className="flex items-center gap-2 px-3 py-1 text-sm bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition-all">
+        <button className="flex items-center gap-2 px-3 py-1 text-sm bg-indigo-100 text-indigo-700 rounded hover:bg-indigo-200 transition-all">
           <Sparkles className="size-4 " />
           AI enhance
         </button>
