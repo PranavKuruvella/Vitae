@@ -6,6 +6,7 @@ import PersonalInfoForm from "../components/PersonalInfoForm.jsx";
 import ResumePreview from "../components/ResumePreview.jsx";
 import TemplateSelector from "../components/TemplateSelector.jsx";
 import ColorPicker from "../components/ColorPicker.jsx";
+import ProfessionalSummary from "../components/ProfessionalSummary.jsx";
 
 const ResumeBuilder = () => {
   const { resumeId } = useParams();
@@ -14,7 +15,7 @@ const ResumeBuilder = () => {
     _id: "",
     title: "",
     personal_info: {},
-    professinal_summary: {},
+    professional_summary: "",
     experience: [],
     education: [],
     projects: [],
@@ -82,7 +83,7 @@ const ResumeBuilder = () => {
                     onChange={(template) => setResumeData(prev => ({ ...prev, template }))}
                   />
 
-                  <ColorPicker selectedColor={resumeData.accent_color} onChange={(color) => setResumeData(prev => ({ ...prev, accent_color: color }))}/>
+                  <ColorPicker selectedColor={resumeData.accent_color} onChange={(color) => setResumeData(prev => ({ ...prev, accent_color: color }))} />
                 </div>
 
                 {/* right side */}
@@ -115,6 +116,15 @@ const ResumeBuilder = () => {
                     setRemoveBackground={setRemove}
                   />
                 )}
+                {/* active session summary aithene edhi chupi */}
+                {activeSection.id === "summary" && (
+                  <ProfessionalSummary
+                    data={resumeData.professional_summary}
+                    onChange={(data) => setResumeData(prev => ({ ...prev, professional_summary: data }))}
+                    setResumeData={setResumeData}
+                  />
+                )}
+
               </div>
             </div>
           </div>
