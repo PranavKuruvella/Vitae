@@ -74,10 +74,10 @@ const SkillForm = ({ data, onChange }) => {
         </div>
       )}
 
-      <div className="bg-indigo-50 p-3 rounded-lg">
-        <p className="text-sm text-indigo-800">
+
+        <p className="text-sm text-gray-600 max-w-4/5 mx-auto text-center pt-5">
           <strong>Note:</strong>Add 5-8 relevant skills.Include majorly the Technical Skills ( programming languages, tools ) !</p>
-      </div>
+
     </div>
   );
 };
