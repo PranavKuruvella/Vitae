@@ -17,7 +17,7 @@ const TemplateTwo = ({ data, accentColor }) => {
     <div className="resume-section p-4 bg-white font-sans text-black max-w-4xl mx-auto">
       {/* Header Section */}
       <div className="text-center mb-2">
-        <h1 className="text-2xl font-bold tracking-tight mb-2" style={{ color: accentColor }}>{data.personal_info?.full_name}</h1>
+        <h1 className="text-2xl font-bold tracking-tight mb-2" style={{ color: accentColor }}>{data.personal_info?.full_name || "John Doe"}</h1>
         <div className="flex flex-wrap justify-center gap-5 text-[14px] text-gray-700">
           {data.personal_info?.phone && (
             <div className="flex items-center gap-1">
@@ -32,19 +32,19 @@ const TemplateTwo = ({ data, accentColor }) => {
             </a>
           )}
           {data.personal_info?.linkedin && (
-            <a href={data.personal_info.linkedin} className="flex items-center gap-1 hover:underline">
+            <a href={data.personal_info.linkedin.startsWith('http') ? data.personal_info.linkedin : `https://${data.personal_info.linkedin}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline">
               <Linkedin className="size-3" style={{ color: accentColor }} />
               LinkedIn
             </a>
           )}
           {data.personal_info?.github && (
-            <a href={data.personal_info.github} className="flex items-center gap-1 hover:underline">
+            <a href={data.personal_info.github.startsWith('http') ? data.personal_info.github : `https://${data.personal_info.github}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline">
               <Github className="size-3" style={{ color: accentColor }} />
               GitHub
             </a>
           )}
           {data.personal_info?.website && (
-            <a href={data.personal_info.website} className="flex items-center gap-1 hover:underline">
+            <a href={data.personal_info.website.startsWith('http') ? data.personal_info.website : `https://${data.personal_info.website}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline">
               <Globe className="size-3" style={{ color: accentColor }} />
               Portfolio
             </a>
@@ -98,8 +98,14 @@ const TemplateTwo = ({ data, accentColor }) => {
             {data.project.map((proj, idx) => (
               <div key={idx} className="space-y-0.5">
                 <div className="flex justify-between items-start">
-                  <h3 className="font-semibold text-[12px] text-gray-800">{proj.name}</h3>
+                  <h3 className="font-semibold text-[13px] text-gray-800">{proj.name}</h3>
+                  {proj.link && (
+                    <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noopener noreferrer" className="text-[10pt] underline" style={{ color: accentColor }}>
+                      {proj.link} <br />
+                    </a>
+                  )}
                 </div>
+                <p className="italic text-[12px] text-gray-800">{proj.type}</p>
                 <p className="text-[14px] pb-2 text-gray-700 ">{proj.description}</p>
               </div>
             ))}

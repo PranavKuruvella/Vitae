@@ -129,11 +129,12 @@ const LaTeXTemplate = ({ data, accentColor }) => {
                             <div className="flex justify-between">
                                 <strong>{proj.name}</strong>
                                 {proj.link && (
-                                    <a href={proj.link} className="text-[10pt] underline" style={{ color: accentColor }}>
-                                        {proj.link}
+                                    <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noopener noreferrer" className="text-[10pt] underline" style={{ color: accentColor }}>
+                                        {proj.link} <br />
                                     </a>
                                 )}
                             </div>
+                                <p className="italic text-[12px] text-gray-800">{proj.type}</p>
                             <ul className="list-disc ml-[10pt] mt-[0.1cm] space-y-[0.05cm]">
                                 {proj.description.split("\n").map((line, i) => (
                                     <li key={i}>{line}</li>
@@ -158,7 +159,7 @@ const LaTeXTemplate = ({ data, accentColor }) => {
                             </div>
                             <div className="italic">{pub.authors}</div>
                             {pub.link && (
-                                <a href={pub.link} className="text-[10pt] underline" style={{ color: accentColor }}>
+                                <a href={pub.link.startsWith('http') ? pub.link : `https://${pub.link}`} target="_blank" rel="noopener noreferrer" className="text-[10pt] underline" style={{ color: accentColor }}>
                                     {pub.link}
                                 </a>
                             )}

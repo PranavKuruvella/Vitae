@@ -9,6 +9,7 @@ import ColorPicker from "../components/ColorPicker.jsx";
 import ProfessionalSummary from "../components/ProfessionalSummary.jsx";
 import ExperienceForm from "../components/ExperienceForm.jsx";
 import EducationForm from "../components/EducationForm.jsx";
+import ProjectForm from "../components/ProjectForm.jsx";
 
 const ResumeBuilder = () => {
   const { resumeId } = useParams();
@@ -20,8 +21,8 @@ const ResumeBuilder = () => {
     professional_summary: "",
     experience: [],
     education: [],
-    projects: [],
-    skills: [],
+    project: [],
+    skill: [],
     template: "classic",
     accent_color: "#3B82F6",
     public: false,
@@ -44,8 +45,8 @@ const ResumeBuilder = () => {
     { id: "summary", name: "Summary", icon: FileText },
     { id: "experience", name: "Experience", icon: Briefcase },
     { id: "education", name: "Education", icon: GraduationCap },
-    { id: "projects", name: "Projects", icon: FolderIcon },
-    { id: "skills", name: "Skills", icon: Sparkles },
+    { id: "project", name: "Projects", icon: FolderIcon },
+    { id: "skill", name: "Skills", icon: Sparkles },
   ]
 
   const activeSection = sections[activeSectionIndex]
@@ -143,6 +144,13 @@ const ResumeBuilder = () => {
                   />
                 )}
 
+                {/* {for Project section} */}
+                {activeSection.id === "project" && (
+                  <ProjectForm
+                    data={resumeData.project}
+                    onChange={(data) => setResumeData(prev => ({ ...prev, project: data }))}
+                  />
+                )}
 
               </div>
             </div>

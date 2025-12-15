@@ -32,19 +32,19 @@ const ModernTemplate = ({ data, accentColor }) => {
 						</div>
 					)}
 					{data.personal_info?.linkedin && (
-						<a target="_blank" href={data.personal_info?.linkedin} className="flex items-center gap-2">
+						<a target="_blank" rel="noopener noreferrer" href={data.personal_info?.linkedin.startsWith('http') ? data.personal_info?.linkedin : `https://${data.personal_info?.linkedin}`} className="flex items-center gap-2">
 							<Linkedin className="size-4" />
 							<span className="break-all text-xs">{data.personal_info.linkedin.split("https://www.")[1] ? data.personal_info.linkedin.split("https://www.")[1] : data.personal_info.linkedin}</span>
 						</a>
 					)}
 					{data.personal_info?.github && (
-						<a target="_blank" href={data.personal_info?.github} className="flex items-center gap-2">
+						<a target="_blank" rel="noopener noreferrer" href={data.personal_info?.github.startsWith('http') ? data.personal_info?.github : `https://${data.personal_info?.github}`} className="flex items-center gap-2">
 							<Github className="size-4" />
 							<span className="break-all text-xs">{data.personal_info.github.split("https://")[1] ? data.personal_info.github.split("https://")[1] : data.personal_info.github}</span>
 						</a>
 					)}
 					{data.personal_info?.website && (
-						<a target="_blank" href={data.personal_info?.website} className="flex items-center gap-2">
+						<a target="_blank" rel="noopener noreferrer" href={data.personal_info?.website.startsWith('http') ? data.personal_info?.website : `https://${data.personal_info?.website}`} className="flex items-center gap-2">
 							<Globe className="size-4" />
 							<span className="break-all text-xs">{data.personal_info.website.split("https://")[1] ? data.personal_info.website.split("https://")[1] : data.personal_info.website}</span>
 						</a>
