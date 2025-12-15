@@ -10,6 +10,7 @@ import ProfessionalSummary from "../components/ProfessionalSummary.jsx";
 import ExperienceForm from "../components/ExperienceForm.jsx";
 import EducationForm from "../components/EducationForm.jsx";
 import ProjectForm from "../components/ProjectForm.jsx";
+import SkillForm from "../components/SkillForm.jsx";
 
 const ResumeBuilder = () => {
   const { resumeId } = useParams();
@@ -22,7 +23,7 @@ const ResumeBuilder = () => {
     experience: [],
     education: [],
     project: [],
-    skill: [],
+    skills: [],
     template: "classic",
     accent_color: "#3B82F6",
     public: false,
@@ -46,7 +47,7 @@ const ResumeBuilder = () => {
     { id: "experience", name: "Experience", icon: Briefcase },
     { id: "education", name: "Education", icon: GraduationCap },
     { id: "project", name: "Projects", icon: FolderIcon },
-    { id: "skill", name: "Skills", icon: Sparkles },
+    { id: "skills", name: "Skills", icon: Sparkles },
   ]
 
   const activeSection = sections[activeSectionIndex]
@@ -149,6 +150,13 @@ const ResumeBuilder = () => {
                   <ProjectForm
                     data={resumeData.project}
                     onChange={(data) => setResumeData(prev => ({ ...prev, project: data }))}
+                  />
+                )}
+                {/* {for Skills section} */}
+                {activeSection.id === "skills" && (
+                  <SkillForm
+                    data={resumeData.skills}
+                    onChange={(data) => setResumeData(prev => ({ ...prev, skills: data }))}
                   />
                 )}
 
